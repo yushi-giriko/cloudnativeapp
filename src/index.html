@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile randomizer</title>
+    <!-- <link rel="stylesheet" type="text/css" href="index.css" /> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        var socket = io();
+    </script>
+</head>
+
+<body>
+    <div class="logo">
+        <img src="logo.png" id="logo">
+    </div>
+    <div class="wrapper">
+        <div id="profile">
+        </div>
+        <form action="">
+            <button class="btn">Randomize a profile</button>
+        </form>
+    </div>
+    <script>
+        $(function () {
+            var socket = io();
+            $('form').submit(function (e) {
+                e.preventDefault(); // prevents page reloading
+                socket.emit('random', Math.floor(Math.random() * 1001));
+                return false;
+            });
+        });
+        socket.on('randomprofile', function (body) {
+            bodytoJson = JSON.parse(body)
+            console.log(bodytoJson)
+            console.log(bodytoJson.items[0])
+            profile = bodytoJson.items[0]
+            profileform = `<img src=${profile.avatar}><h4>${profile.first_name} ${profile.last_name}</h4><p>Email: ${profile.email}<br>Gender: ${profile.gender}</p>`
+            document.getElementById('profile').innerHTML = profileform
+        })
+    </script>
+</body>
+
+</html>
