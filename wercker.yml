@@ -12,7 +12,7 @@ build:
         name: echo nodejs information
         # Here we are declaring an environment variable to use it latter in our application
         code: |
-          echo "export DBURI=$DBURI" > ~/.bashrc
+          echo "export DBURI=$DBURI" >> ~/.bashrc
           source ~/.bashrc
           echo $DBURI
           echo "node version $(node -v) running"
