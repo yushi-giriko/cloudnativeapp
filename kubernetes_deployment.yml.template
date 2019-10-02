@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cloudnativeapp
+  labels:
+    commit: ${WERCKER_GIT_COMMIT}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudnativeapp
+  template:
+    metadata:
+      labels:
+        app: cloudnativeapp
+        commit: ${WERCKER_GIT_COMMIT}
+    spec:
+      containers:
+      - name: cloudnativeapp
+        image: ${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
+        ports:
+        - name: cloudnativeapp
+          containerPort: 3000
+          protocol: TCP
+      imagePullSecrets:
+      - name: ${OKE_IMAGESECRET}
