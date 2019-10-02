@@ -17,10 +17,10 @@ spec:
     spec:
       containers:
       - name: cloudnativeapp
-        image: ${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
+        image: ${DOCKER_REPO}:latest
         ports:
         - name: cloudnativeapp
-          containerPort: 3000
+          containerPort: 80
           protocol: TCP
       imagePullSecrets:
       - name: wercker
