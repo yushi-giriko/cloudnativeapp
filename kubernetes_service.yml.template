@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudnativeapp
+  labels:
+    app: cloudnativeapp
+    commit: ${WERCKER_GIT_COMMIT}
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: cloudnativeapp
+    commit: ${WERCKER_GIT_COMMIT}
+    type: LoadBalancer
