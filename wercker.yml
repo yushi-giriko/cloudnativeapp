@@ -12,7 +12,7 @@ build:
         name: echo nodejs information
         # Here we are declaring an environment variable to use it latter in our application
         code: |
-          echo export DBURI=${DBURL} >> /etc/profile
+          echo "export DBURI=teste" >> /etc/profile
           echo $DBURI
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
