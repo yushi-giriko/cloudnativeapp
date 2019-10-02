@@ -14,7 +14,6 @@ build:
         code: |
           export DBURI=$DBURL
           echo $DBURI
-          curl http://localhost:80/
           echo "node version $(node -v) running"
           echo "npm version $(npm -v) running"
 
