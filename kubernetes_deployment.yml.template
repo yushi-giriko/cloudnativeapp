@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: cloudnativeapp
-        image: ${DOCKER_REPO}:latest
+        image: ${DOCKER_REGISTRY}/${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
         ports:
         - name: cloudnativeapp
           containerPort: 80
