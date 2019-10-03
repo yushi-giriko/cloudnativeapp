@@ -8,7 +8,7 @@ var request = require("request");
 app.get('/', function (req, res) {
     var options = {
         method: 'GET',
-        url: `${process.env.DBURI}?id=${Math.floor(Math.random()*1000)}`,
+        url: `<YOUR ORDS ENDPOINT>?id=${Math.floor(Math.random()*1000)}`,
     };
     request(options, function (error, response, body) {
         if (error) throw new Error(error);
