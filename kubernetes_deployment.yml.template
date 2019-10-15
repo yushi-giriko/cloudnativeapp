@@ -39,4 +39,4 @@ spec:
   selector:
     app: cloudnativeapp
     commit: ${WERCKER_GIT_COMMIT}
-    type: LoadBalancer
+  type: LoadBalancer
