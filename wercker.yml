@@ -59,7 +59,7 @@ deploy-to-kubernetes:
         server: $OKE_MASTER
         token: $OKE_TOKEN
         insecure-skip-tls-verify: true
-        command: create secret docker-registry wercker --dockerserver=$DOCKER_REGISTRY/$DOCKER_REPO --docker-email=nobody@noemail.com --docker-username=$DOCKER_USERNAME --docker-password='$OCI_AUTH_TOKEN'; echo create registry secret
+        command: create secret docker-registry wercker --docker-server=$DOCKER_REGISTRY/$DOCKER_REPO --docker-email=nobody@noemail.com --docker-username=$DOCKER_USERNAME --docker-password='$OCI_AUTH_TOKEN'; echo create registry secret
         
     # `apply` is a good command to use here, as it'll create Kubernetes entities if they are missing.
     - kubectl:
