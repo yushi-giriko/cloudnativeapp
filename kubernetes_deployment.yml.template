@@ -36,7 +36,11 @@ spec:
   ports:
   - port: 80
     targetPort: 80
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
   selector:
     app: cloudnativeapp
-    commit: ${WERCKER_GIT_COMMIT}
   type: LoadBalancer
+---
