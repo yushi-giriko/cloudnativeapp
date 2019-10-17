@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: cloudnativeapp
+  labels:
+    commit: ${WERCKER_GIT_COMMIT}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloudnativeapp
+  template:
+    metadata:
+      labels:
+        app: cloudnativeapp
+        commit: ${WERCKER_GIT_COMMIT}
+    spec:
+      containers:
+      - name: cloudnativeapp
+        image: ${DOCKER_REGISTRY}/${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
+        ports:
+        - name: cloudnativeapp
+          containerPort: 80
+          protocol: TCP
+      imagePullSecrets:
+        - name: wercker
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloudnativeapp
+  labels:
+    app: cloudnativeapp
+    commit: ${WERCKER_GIT_COMMIT}
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: cloudnativeapp
+    commit: ${WERCKER_GIT_COMMIT}
+  type: LoadBalancer
+---
