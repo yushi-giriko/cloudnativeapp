@@ -1,5 +1,5 @@
 box: 
-# The image that is going to be used as base image for our application
+# The image that is going to be used as base image for our application.
   id: node:latest
     
 build:
