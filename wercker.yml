@@ -4,7 +4,7 @@ box:
     
 build:
   steps:
-# The code bellow is about getting our application nodejs dependencies installed on our container.
+# The code bellow is about getting our application nodejs dependencies installed on our container
 # To see the references for other languages, please refer to: https://devcenter.wercker.com/quickstarts/languages/
     - npm-install
     - npm-test
