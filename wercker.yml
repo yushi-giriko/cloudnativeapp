@@ -1,0 +1,18 @@
+box: 
+# The image that is going to be used as base image for our application
+  id: node:latest
+    
+build:
+  steps:
+# The code bellow is about getting our application nodejs dependencies installed on our container.
+# To see the references for other languages, please refer to: https://devcenter.wercker.com/quickstarts/languages/
+    - npm-install
+    - npm-test
+    - script:
+        name: echo nodejs information
+        # Here we are declaring an environment variable to use it latter in our application
+        code: |
+          export DBURI=$DBURI
+          echo $DBURI
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
