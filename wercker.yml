@@ -27,3 +27,4 @@ push:
             username: $DOCKER_USERNAME
             password: $OCI_AUTH_TOKEN
             repository: $DOCKER_REGISTRY/$DOCKER_REPO
+            
